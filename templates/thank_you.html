@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .thank-card {
+            background-color: rgba(15, 23, 42, 0.9);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .thank-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .thank-card h2 {
+            color: #FFD700; /* Yellow */
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .thank-card p {
+            color: #e0f2fe;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-home {
+            padding: 12px 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+
+        /* Floating sparkles */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkleAnim 1.5s infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% {transform: translate(0,0) scale(0); opacity: 0;}
+            50% {transform: translate(50px,-50px) scale(1); opacity: 1;}
+            100% {transform: translate(0,0) scale(0); opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-card position-relative">
+        <h2>Thank You!</h2>
+        <p>Your feedback has been successfully submitted. We appreciate your time and thoughts! 💛</p>
+        <a href="/" class="btn btn-home">Go to Home</a>
+
+        <!-- Sparkles -->
+        <div class="sparkle" style="top:10px; left:20px;"></div>
+        <div class="sparkle" style="top:60px; left:150px; animation-delay:0.5s;"></div>
+        <div class="sparkle" style="top:120px; left:80px; animation-delay:1s;"></div>
+        <div class="sparkle" style="top:180px; left:200px; animation-delay:0.7s;"></div>
+    </div>
+
+</body>
+</html>

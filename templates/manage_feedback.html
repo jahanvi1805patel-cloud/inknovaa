@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Manage Feedback{% endblock %}
+
+{% block content %}
+
+<style>
+
+body{
+background: linear-gradient(135deg,#2f3d79,#011948);
+background-attachment: fixed;
+min-height:100vh;
+color:white;
+}
+
+/* CARD CONTAINER */
+.feedback-container{
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(8px);
+border-radius:15px;
+padding:30px;
+}
+
+/* TABLE */
+table{
+color:white;
+}
+
+th,td{
+text-align:center;
+vertical-align:middle;
+}
+
+th{
+background: rgba(0,0,0,0.3);
+}
+
+</style>
+
+<h2 class="text-center mt-4">💬 User Feedback</h2>
+
+<div class="container mt-4 feedback-container">
+
+<table class="table table-bordered table-hover">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Message</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for f in feedbacks %}
+
+<tr>
+<td>{{ f[0] }}</td>
+<td>{{ f[1] }}</td>
+<td>{{ f[2] }}</td>
+<td>{{ f[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

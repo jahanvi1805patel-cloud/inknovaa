@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - InkStruct AI
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* 🔥 HERO SECTION */
+.hero-section {
+    background: radial-gradient(circle at top left, #243b6b, #0f172a 60%);
+    color: white;
+    padding: 90px 20px 60px 20px;   /* 👈 Reduced bottom space */
+    text-align: center;
+    width: 100%;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 20px;
+    margin-top: 18px;
+    color: #cbd5e1;
+}
+
+/* 🔥 HERO BUTTON */
+.hero-btn {
+    margin-top: 28px;
+    padding: 14px 34px;
+    font-size: 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, #2196f3, #2563eb);
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(37,99,235,0.4);
+}
+
+/* 🔥 FEATURES SECTION */
+.features-section {
+    background: transparent;
+    padding: 50px 20px 80px 20px;  /* 👈 Top padding reduced */
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;   /* 👈 Reduced gap */
+    color: white;
+}
+
+/* 🔥 FEATURE CARDS (Glass Style) */
+.feature-card {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 35px 25px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    height: 100%;
+    color: #e2e8f0;
+}
+
+.feature-card h4 {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #60a5fa;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 60px rgba(37,99,235,0.25);
+}
+
+</style>
+
+<!-- HERO -->
+<div class="hero-section">
+    <h1>Automated Handwriting Recognition</h1>
+    <p>
+        Convert handwritten forms into digital text using Machine Learning & OCR Technology
+    </p>
+
+    <a href="/upload" class="hero-btn">
+        Upload Handwritten Form
+    </a>
+</div>
+
+<!-- FEATURES -->
+<div class="features-section">
+    <h2>Key Features</h2>
+
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <h4>ML Based Recognition</h4>
+                    <p>
+                        Advanced ML models recognize handwritten characters accurately.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <h4>OCR Processing</h4>
+                    <p>
+                        Extracts text from scanned forms and handwritten documents.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <h4>Form Digitization</h4>
+                    <p>
+                        Converts physical forms into editable and searchable digital data.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

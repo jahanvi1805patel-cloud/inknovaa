@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Contact Messages{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* 🔥 Same Animated Background */
+.contact-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    padding: 80px 20px;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glass Container */
+.contact-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* Table Styling */
+.table-glass {
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table-glass th {
+    background: rgba(14,165,233,0.3);
+    color: white;
+    font-weight: 600;
+}
+
+.table-glass td {
+    color:black;
+}
+
+.table-glass tr:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* Heading */
+.page-title {
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+</style>
+
+<div class="contact-wrapper">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2 class="page-title">📩 Contact Messages</h2>
+
+<div class="table-responsive">
+
+<table class="table table-glass table-bordered align-middle text-center">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Subject</th>
+<th>Message</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for c in contacts %}
+
+<tr>
+<td>{{c[0]}}</td>
+<td>{{c[1]}}</td>
+<td>{{c[2]}}</td>
+<td>{{c[3]}}</td>
+<td>{{c[4]}}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

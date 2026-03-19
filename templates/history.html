@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}My History{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* 🔥 PAGE BACKGROUND */
+.history-page {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #243b6b, #0f172a 60%);
+    padding: 40px 0;
+}
+
+/* 🔥 MAIN CARD FLEX */
+.history-card {
+    width: 95%;
+    max-width: 1200px;
+    display: flex;
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* 🔥 LEFT SIDE (INFO PANEL) */
+.history-left {
+    flex: 1;
+    padding: 60px 50px;
+    color: white;
+}
+
+.history-left h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.history-left p {
+    font-size: 15px;
+    color: #cbd5e1;
+}
+
+/* 🔥 RIGHT SIDE (HISTORY TABLE) */
+.history-right {
+    flex: 2;
+    background: linear-gradient(to bottom right, #1e3a8a, #0f172a);
+    padding: 40px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 28px 28px 0;
+    overflow-x: auto;
+    color: white;
+}
+
+/* 🔥 TABLE STYLING */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th, .history-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.history-table th {
+    background: rgba(255,255,255,0.08);
+    color: #fcd34d;
+    font-weight: 600;
+}
+
+.history-table tr:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+/* 🔥 AVATAR */
+.profile-box {
+    max-width: 120px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #facc15, #f59e0b, #fcd34d, #f59e0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 15px 35px rgba(250,158,11,0.6);
+    animation: glowPulse 2.5s infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-avatar::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+    animation: sparkle 3s infinite;
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 15px rgba(250,205,21,0.6), 0 0 30px rgba(250,205,21,0.4);}
+    100% { box-shadow: 0 0 25px rgba(250,205,21,0.8), 0 0 50px rgba(250,205,21,0.6);}
+}
+
+@keyframes sparkle {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+.profile-avatar i {
+    font-size: 46px;
+    color: white;
+}
+
+</style>
+
+<div class="history-page">
+    <div class="history-card">
+
+        <!-- LEFT INFO PANEL -->
+        <div class="history-left">
+            <div class="profile-box">
+                <div class="profile-avatar">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+            </div>
+            <h2>My History</h2>
+            <p>Here you can view all your uploaded handwritten documents, recognition results, and past activity. Scroll to see your full history.</p>
+        </div>
+
+        <!-- RIGHT HISTORY TABLE -->
+        <div class="history-right">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Document Name</th>
+                        <th>Recognition Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in user_history %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.doc_name }}</td>
+                        <td>{{ item.status }}</td>
+                        <td>{{ item.details }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align:center; color:#fcd34d;">No history found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

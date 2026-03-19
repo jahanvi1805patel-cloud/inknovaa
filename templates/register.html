@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* 🔥 PAGE BACKGROUND */
+.login-page {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #243b6b, #0f172a 60%);
+}
+
+/* 🔥 MAIN CARD FLEX */
+.login-card {
+    width: 900px;
+    max-width: 95%;
+    display: flex;
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* 🔥 LEFT SIDE (FORM) */
+.login-left {
+    flex: 1;
+    padding: 60px 50px;
+    color: white;
+}
+
+.login-left h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* 🔥 INPUT */
+.form-control {
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    padding-left: 18px;
+    font-size: 15px;
+    margin-bottom: 18px;
+    transition: 0.3s;
+}
+
+.form-control::placeholder {
+    color: #cbd5e1;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(250,205,21,0.6);
+    background: rgba(255,255,255,0.12);
+}
+
+/* 🔥 BUTTON */
+.btn-register {
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #facc15, #f59e0b, #fcd34d, #f59e0b);
+    background-size: 300% 300%;
+    animation: gradientMove 4s ease infinite;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(250,158,11,0.6);
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* LOGIN TEXT */
+.register-text {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #cbd5e1;
+}
+
+.register-text a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+/* 🔥 RIGHT SIDE */
+.login-right {
+    flex: 1;
+    background: linear-gradient(to bottom right, #1e3a8a, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+.profile-box {
+    max-width: 300px;
+}
+
+.profile-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #facc15, #f59e0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 15px 35px rgba(250,158,11,0.6);
+}
+
+.profile-avatar i {
+    font-size: 46px;
+    color: white;
+}
+
+.profile-box h4 {
+    margin-bottom: 10px;
+}
+
+.profile-box p {
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+</style>
+
+<div class="login-page">
+<div class="login-card">
+
+<!-- LEFT SIDE -->
+<div class="login-left">
+<h2>Create Account</h2>
+
+<form method="POST" action="/register">
+
+<!-- 🔥 CHANGE HERE -->
+<input type="text" class="form-control" name="username" placeholder="Username" required>
+
+<input type="email" class="form-control" name="email" placeholder="Email Address" required>
+
+<input type="password" class="form-control" name="password" placeholder="Password" required>
+
+<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+
+<button type="submit" class="btn-register">
+Register
+</button>
+
+</form>
+
+<div class="register-text">
+Already have an account? <a href="/login">Login</a>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="login-right">
+<div class="profile-box">
+
+<div class="profile-avatar">
+<i class="bi bi-person-plus-fill"></i>
+</div>
+
+<h4>Join the Secure Dashboard</h4>
+
+<p>
+Register to start uploading handwritten documents,
+track your recognition history, and access digitized files securely.
+</p>
+
+</div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

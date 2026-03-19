@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* 🔥 Animated Background */
+.contact-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glass Container */
+.contact-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 50px;
+    width: 100%;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* Left Info */
+.contact-info h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    opacity: 0.85;
+    margin-bottom: 25px;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: #38bdf8;
+}
+
+/* Floating Inputs */
+.form-floating > .form-control {
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: white;
+    border-radius: 12px;
+}
+
+.form-floating > label {
+    color: rgba(255,255,255,0.7);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 2px #38bdf8;
+    background: rgba(255,255,255,0.18);
+    color: white;
+}
+
+/* Button */
+.btn-contact {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    background: linear-gradient(to right, #0ea5e9, #2563eb);
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(14,165,233,0.5);
+}
+
+/* Social Icons */
+.social-icons i {
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #0ea5e9;
+    transform: scale(1.2);
+}
+
+</style>
+
+<div class="contact-wrapper">
+    <div class="container">
+        <div class="contact-box">
+            <div class="row">
+
+                <!-- LEFT SIDE -->
+                <div class="col-md-5 contact-info">
+                    <h2>Let's Talk 👋</h2>
+                    <p>Have questions about InkNova? Want to collaborate? Or just say hi? We’re always open to conversations.</p>
+
+                    <p><i class="bi bi-envelope-fill"></i> support@inknova.com</p>
+                    <p><i class="bi bi-geo-alt-fill"></i> Ahmedabad, India</p>
+
+                    <div class="social-icons mt-4">
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-github"></i>
+                        <i class="bi bi-twitter-x"></i>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE FORM -->
+                <div class="col-md-7">
+                    <form method="POST" action="/contact">
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
+                            <label>Your Name</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            <label>Your Email</label>
+                        </div>
+
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                            <label>Your Subject</label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" name="message" placeholder="Message" style="height: 120px" required></textarea>
+                            <label>Your Message</label>
+                        </div>
+
+                        <button type="submit" class="btn-contact">
+                            Send Message 🚀
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

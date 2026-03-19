@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Digitized Table Result{% endblock %}
+
+{% block content %}
+<style>
+    body{
+         background-color: rgba(15, 23, 42, 0.9);
+    background-attachment: fixed;
+    min-height:100vh;
+    color:white;
+}</style>
+<div class="container mt-5 d-flex flex-column align-items-center">
+
+    <!-- Card Container -->
+    <div class="card shadow-lg p-4 mb-4" style="
+        background-color: rgba(15, 23, 42, 0.9);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.15);
+        backdrop-filter: blur(15px);
+        width: 100%;
+        max-width: 900px;
+    ">
+        <h2 class="mb-4 text-center" style="
+            font-weight: 700;
+            color: #FFD700; /* Yellow header */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        ">
+            Digitized Table Result
+        </h2>
+
+        <!-- Table Preview -->
+        <div class="table-responsive">
+            <table class="table table-bordered" style="
+                background-color: rgba(255, 255, 255, 0.05);
+                color: #e0f2fe;
+                border-radius: 10px;
+                overflow: hidden;
+            ">
+                <thead>
+                    <tr style="background-color: rgba(59, 130, 246, 0.3); color: white;">
+                        {% for header in table_data[0] %}
+                        <th style="text-align: center; padding: 12px;">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in table_data[1:] %}
+                    <tr>
+                        {% for cell in row %}
+                        <td style="white-space: pre-wrap; vertical-align: top; padding: 10px; border-top: 1px solid rgba(255,255,255,0.2);">{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Excel Download Link -->
+        <div class="text-center mt-4">
+            <a href="/download/{{ excel_filename }}" class="btn btn-gradient" style="
+                padding: 12px 25px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                border-radius: 12px;
+                background: linear-gradient(90deg, #3b82f6, #06b6d4);
+                color: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.4)'">
+                Download Excel
+            </a>
+             <a href="{{ url_for('feedback', file_id=file_id) }}" class="btn btn-gradient"style="
+                padding: 12px 25px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                border-radius: 12px;
+                background: linear-gradient(90deg, #3b82f6, #06b6d4);
+                color: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.4)'">
+               Give feedback 
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

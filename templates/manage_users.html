@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Manage Users{% endblock %}
+
+{% block content %}
+
+<style>
+body{
+background: linear-gradient(135deg,#2f3d79,#011948);
+background-attachment: fixed;
+min-height:100vh;
+color:white;
+}
+
+.table-container{
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(8px);
+border-radius:15px;
+padding:30px;
+}
+
+table{
+color:white;
+}
+
+th,td{
+text-align:center;
+}
+</style>
+
+<h2 class="text-center mt-4">👥 Manage Users</h2>
+
+<div class="container mt-4 table-container">
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Password</th>
+</tr>
+
+{% for user in users %}
+<tr>
+<td>{{ user[0] }}</td>
+<td>{{ user[1] }}</td>
+<td>{{ user[2] }}</td>
+<td>{{ user[3] }}</td>
+<td>
+<a href="{{ url_for('delete_user', user_id=user[0]) }}" 
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this user?')">
+Delete
+</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+
+{% endblock %}

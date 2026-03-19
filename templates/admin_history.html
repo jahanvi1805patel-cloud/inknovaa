@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - User History</title>
+    <style>
+        /* Body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg,#2f3d79,#011948);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: white; /* dark blue */
+            margin-bottom: 30px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #cce0ff;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(90deg, #0059b3, #3399ff);
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f8ff; /* very light blue */
+        }
+
+        tr:hover {
+            background: #cce0ff;
+            transition: 0.3s;
+        }
+
+        /* Links */
+        a {
+            color: #004080;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #00264d;
+        }
+
+        /* Responsive table */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th {
+                text-align: right;
+            }
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin - All Users History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Uploaded File</th>
+                <th>Status</th>
+                <th>Details / Excel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in all_history %}
+            <tr>
+                <td data-label="User">{{ item.user }}</td>
+                <td data-label="Uploaded File">{{ item.doc_name }}</td>
+                <td data-label="Status">{{ item.status }}</td>
+                <td data-label="Details / Excel">
+                    {% if item.details != "No Excel Generated" %}
+                        <a href="{{ url_for('static', filename='uploads/' ~ item.user ~ '/' ~ item.details) }}" target="_blank">{{ item.details }}</a>
+                    {% else %}
+                        {{ item.details }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

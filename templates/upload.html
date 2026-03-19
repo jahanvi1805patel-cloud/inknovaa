@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Document{% endblock %}
+
+{% block content %}
+
+<style>
+
+body{
+    background: linear-gradient(135deg,#243b6b,#0f172a);
+background-attachment: fixed;
+min-height:100vh;
+color:white;
+}
+
+.upload-card{
+    background:#0f172a;
+    border-radius:15px;
+    padding:40px;
+    max-width:500px;
+    margin:auto;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.upload-title{
+    text-align:center;
+    color:#FFD700;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.upload-input{
+    width:100%;
+    padding:10px;
+    margin-bottom:20px;
+}
+
+.process-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,#3b82f6,#06b6d4);
+    color:white;
+    font-weight:600;
+}
+
+</style>
+
+<div class="container mt-5">
+
+<div class="upload-card">
+
+<h2 class="upload-title">Upload Handwritten Table</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="file" accept="image/*" class="upload-input">
+
+<button type="submit" class="process-btn">
+Process Document
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
