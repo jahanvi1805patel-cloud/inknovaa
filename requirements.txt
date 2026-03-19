@@ -1,3 +1,4 @@
 flask
 easyocr
 gunicorn
+python-bidi==0.4.2
